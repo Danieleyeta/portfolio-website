@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Monitor, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const links = [
   { label: 'About', href: '#about' },
@@ -8,9 +9,14 @@ const links = [
   { label: 'Contact', href: '#contact' },
 ];
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onEnterDesktop: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onEnterDesktop }) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -28,16 +34,16 @@ const Navbar: React.FC = () => {
       <div
         className="transition-all duration-500"
         style={{
-          background: scrolled ? 'rgba(6,6,18,0.92)' : 'transparent',
+          background: scrolled ? 'var(--bg-nav)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
+          borderBottom: scrolled ? '1px solid var(--border-subtle)' : 'none',
         }}
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="#" className="text-xl font-extrabold tracking-tighter text-white flex items-center gap-2.5">
+          <a href="#" className="text-xl font-extrabold tracking-tighter flex items-center gap-2.5" style={{ color: 'var(--text-primary)' }}>
             <span
               className="w-3 h-3 rounded-full animate-pulse"
-              style={{ background: 'linear-gradient(135deg,#8b5cf6,#06b6d4)', boxShadow: '0 0 12px rgba(139,92,246,0.6)' }}
+              style={{ background: 'linear-gradient(135deg,#3b82f6,#f59e0b)', boxShadow: '0 0 12px rgba(37,99,235,0.6)' }}
             />
             Eyeta.
           </a>
@@ -53,23 +59,81 @@ const Navbar: React.FC = () => {
                 {link.label}
               </a>
             ))}
+            <button
+              onClick={onEnterDesktop}
+              className="flex items-center gap-1.5 text-sm font-semibold text-slate-400 hover:text-white transition-colors tracking-wide cursor-pointer"
+            >
+              <Monitor className="w-4 h-4" />
+              Desktop Mode
+            </button>
+
+            {/* Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110 cursor-pointer"
+              style={{
+                background: 'var(--bg-subtle)',
+                border: '1px solid var(--border-stronger)',
+                color: 'var(--text-secondary)',
+              }}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={theme}
+                  initial={{ opacity: 0, rotate: -90, scale: 0.7 }}
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ opacity: 0, rotate: 90, scale: 0.7 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center justify-center"
+                >
+                  {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                </motion.span>
+              </AnimatePresence>
+            </button>
+
             <a
               href="#contact"
               className="px-5 py-2.5 rounded-full text-white text-sm font-bold hover:opacity-90 transition-opacity"
-              style={{ background: 'linear-gradient(135deg,#7c3aed,#0891b2)', boxShadow: '0 4px 20px rgba(124,58,237,0.3)' }}
+              style={{ background: 'linear-gradient(135deg,#2563eb,#f59e0b)', boxShadow: '0 4px 20px rgba(37,99,235,0.3)' }}
             >
               Hire Me
             </a>
           </nav>
 
-          {/* Mobile toggle */}
-          <button
-            className="md:hidden text-slate-300 hover:text-white transition-colors"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile: theme toggle + hamburger */}
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="w-9 h-9 rounded-full flex items-center justify-center transition-all cursor-pointer"
+              style={{
+                background: 'var(--bg-subtle)',
+                border: '1px solid var(--border-stronger)',
+                color: 'var(--text-secondary)',
+              }}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={theme}
+                  initial={{ opacity: 0, rotate: -90, scale: 0.7 }}
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ opacity: 0, rotate: 90, scale: 0.7 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center justify-center"
+                >
+                  {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                </motion.span>
+              </AnimatePresence>
+            </button>
+            <button
+              className="text-slate-300 hover:text-white transition-colors"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile nav */}
@@ -81,7 +145,7 @@ const Navbar: React.FC = () => {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25 }}
               className="md:hidden overflow-hidden"
-              style={{ background: 'rgba(13,13,30,0.98)', borderTop: '1px solid rgba(255,255,255,0.05)' }}
+              style={{ background: 'var(--bg-mobile-nav)', borderTop: '1px solid var(--border-subtle)' }}
             >
               <div className="px-6 py-6 flex flex-col gap-4">
                 {links.map(link => (
@@ -94,11 +158,18 @@ const Navbar: React.FC = () => {
                     {link.label}
                   </a>
                 ))}
+                <button
+                  onClick={() => { setMenuOpen(false); onEnterDesktop(); }}
+                  className="flex items-center gap-2 text-base font-semibold text-slate-300 hover:text-white transition-colors cursor-pointer"
+                >
+                  <Monitor className="w-4 h-4" />
+                  Desktop Mode
+                </button>
                 <a
                   href="#contact"
                   onClick={() => setMenuOpen(false)}
                   className="mt-2 px-5 py-3 rounded-full text-white text-sm font-bold text-center"
-                  style={{ background: 'linear-gradient(135deg,#7c3aed,#0891b2)' }}
+                  style={{ background: 'linear-gradient(135deg,#2563eb,#f59e0b)' }}
                 >
                   Hire Me
                 </a>

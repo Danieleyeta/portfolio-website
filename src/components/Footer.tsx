@@ -21,7 +21,8 @@ const Footer: React.FC = () => {
   return (
     <footer id="contact" className="relative z-10">
       {/* Contact CTA */}
-      <div className="py-32 px-6" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <div className="section-divider max-w-4xl mx-auto" />
+      <div className="py-32 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -29,37 +30,41 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-sm font-bold uppercase tracking-widest mb-6" style={{ color: '#a78bfa' }}>Get in Touch</p>
-            <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-white mb-6 leading-tight">
+            <p className="text-sm font-bold uppercase tracking-widest mb-6" style={{ color: '#60a5fa' }}>Get in Touch</p>
+            <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 leading-tight" style={{ color: 'var(--text-primary)' }}>
               Let&apos;s build something{' '}
               <span
                 className="text-transparent bg-clip-text"
-                style={{ backgroundImage: 'linear-gradient(135deg,#a78bfa,#22d3ee)' }}
+                style={{ backgroundImage: 'linear-gradient(135deg,#60a5fa,#f5c542)' }}
               >
                 exceptional.
               </span>
             </h2>
-            <p className="text-xl mb-12 max-w-xl mx-auto" style={{ color: '#475569' }}>
+            <p className="text-xl mb-12 max-w-xl mx-auto" style={{ color: 'var(--text-faint)' }}>
               Available for freelance work and full-time opportunities. Let&apos;s connect.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="mailto:contact@example.com"
+                href="mailto:danieleyeta1234@gmail.com"
                 className="flex items-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm uppercase tracking-widest hover:opacity-90 transition-all hover:-translate-y-0.5"
-                style={{ background: 'linear-gradient(135deg,#7c3aed,#0891b2)', boxShadow: '0 8px 30px rgba(124,58,237,0.35)' }}
+                style={{ background: 'linear-gradient(135deg,#2563eb,#f59e0b)', boxShadow: '0 8px 30px rgba(37,99,235,0.35)' }}
               >
                 <Mail className="w-4 h-4" />
                 Send an Email
               </a>
               <div className="flex gap-3">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Danieleyeta"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  className="w-14 h-14 rounded-full flex items-center justify-center text-slate-500 hover:text-white hover:scale-110 transition-all"
-                  style={{ border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.04)' }}
+                  className="w-14 h-14 rounded-full flex items-center justify-center hover:scale-110 transition-all"
+                  style={{
+                    border: '1px solid var(--border-strong)',
+                    background: 'var(--bg-subtle)',
+                    color: 'var(--text-muted)',
+                  }}
                 >
                   <GithubIcon />
                 </a>
@@ -68,8 +73,12 @@ const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="w-14 h-14 rounded-full flex items-center justify-center text-slate-500 hover:text-white hover:scale-110 transition-all"
-                  style={{ border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.04)' }}
+                  className="w-14 h-14 rounded-full flex items-center justify-center hover:scale-110 transition-all"
+                  style={{
+                    border: '1px solid var(--border-strong)',
+                    background: 'var(--bg-subtle)',
+                    color: 'var(--text-muted)',
+                  }}
                 >
                   <LinkedinIcon />
                 </a>
@@ -80,17 +89,17 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom bar */}
-      <div className="py-8 px-6" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <div className="py-8 px-6" style={{ borderTop: '1px solid var(--border-subtle)' }}>
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <a href="#" className="text-lg font-extrabold tracking-tighter text-white flex items-center gap-2.5">
+          <a href="#" className="text-lg font-extrabold tracking-tighter flex items-center gap-2.5" style={{ color: 'var(--text-primary)' }}>
             <span
               className="w-2.5 h-2.5 rounded-full"
-              style={{ background: 'linear-gradient(135deg,#8b5cf6,#06b6d4)' }}
+              style={{ background: 'linear-gradient(135deg,#3b82f6,#f59e0b)' }}
             />
             Eyeta.
           </a>
-          <p className="text-sm flex items-center gap-1.5" style={{ color: '#334155' }}>
-            Built with <Heart className="w-3.5 h-3.5 fill-violet-500 text-violet-500" /> by Eyeta Daniel &copy; {new Date().getFullYear()}
+          <p className="text-sm flex items-center gap-1.5" style={{ color: 'var(--text-faintest)' }}>
+            Built with <Heart className="w-3.5 h-3.5 fill-blue-500 text-blue-500" /> by Eyeta Daniel &copy; {new Date().getFullYear()}
           </p>
         </div>
       </div>

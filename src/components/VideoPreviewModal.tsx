@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink } from 'lucide-react';
+import { X, ExternalLink, ArrowLeft } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -19,7 +20,6 @@ interface VideoPreviewModalProps {
 const VideoPreviewModal: React.FC<VideoPreviewModalProps> = ({ isOpen, onClose, project }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Play / pause when modal opens or closes
   useEffect(() => {
     if (isOpen && videoRef.current) {
       videoRef.current.currentTime = 0;
@@ -30,7 +30,6 @@ const VideoPreviewModal: React.FC<VideoPreviewModalProps> = ({ isOpen, onClose, 
     }
   }, [isOpen]);
 
-  // Close on Escape key
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -39,13 +38,12 @@ const VideoPreviewModal: React.FC<VideoPreviewModalProps> = ({ isOpen, onClose, 
     return () => window.removeEventListener('keydown', handleKey);
   }, [isOpen, onClose]);
 
-  // Lock body scroll while open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {isOpen && project && (
         <motion.div
@@ -69,18 +67,32 @@ const VideoPreviewModal: React.FC<VideoPreviewModalProps> = ({ isOpen, onClose, 
             exit={{ opacity: 0, scale: 0.92, y: 24 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full max-w-4xl rounded-3xl overflow-hidden"
-            style={{ background: 'rgba(12,12,28,0.97)', border: '1px solid rgba(255,255,255,0.08)' }}
+            style={{ background: 'var(--bg-video-modal)', border: '1px solid var(--border-strong)' }}
             onClick={e => e.stopPropagation()}
           >
-            {/* Close button */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all hover:scale-110"
-              style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)' }}
-              aria-label="Close preview"
+            {/* Top bar with back button */}
+            <div
+              className="flex items-center justify-between px-5 py-3"
+              style={{ borderBottom: '1px solid var(--border-default)' }}
             >
-              <X className="w-5 h-5" />
-            </button>
+              <button
+                onClick={onClose}
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all hover:-translate-x-0.5 hover:opacity-80"
+                style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border-stronger)', color: 'var(--text-secondary)' }}
+                aria-label="Go back"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back
+              </button>
+              <button
+                onClick={onClose}
+                className="w-8 h-8 rounded-full flex items-center justify-center transition-all hover:scale-110 hover:opacity-80"
+                style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border-stronger)', color: 'var(--text-secondary)' }}
+                aria-label="Close preview"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
 
             {/* Video area */}
             <div className="relative w-full bg-black" style={{ aspectRatio: '16/9' }}>
@@ -97,17 +109,17 @@ const VideoPreviewModal: React.FC<VideoPreviewModalProps> = ({ isOpen, onClose, 
               ) : (
                 <div
                   className="w-full h-full flex flex-col items-center justify-center gap-4"
-                  style={{ background: 'linear-gradient(135deg,rgba(124,58,237,0.15),rgba(8,145,178,0.1))' }}
+                  style={{ background: 'linear-gradient(135deg,rgba(37,99,235,0.15),rgba(245,158,11,0.1))' }}
                 >
                   <div
                     className="w-20 h-20 rounded-full flex items-center justify-center"
-                    style={{ background: 'rgba(124,58,237,0.2)', border: '1px solid rgba(124,58,237,0.3)' }}
+                    style={{ background: 'rgba(37,99,235,0.2)', border: '1px solid rgba(37,99,235,0.3)' }}
                   >
-                    <svg className="w-8 h-8" style={{ color: '#a78bfa' }} fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8" style={{ color: '#60a5fa' }} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
-                  <p className="text-sm font-semibold" style={{ color: '#475569' }}>
+                  <p className="text-sm font-semibold" style={{ color: 'var(--text-faint)' }}>
                     Video preview coming soon
                   </p>
                 </div>
@@ -117,26 +129,26 @@ const VideoPreviewModal: React.FC<VideoPreviewModalProps> = ({ isOpen, onClose, 
             {/* Project details */}
             <div className="p-8">
               <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="text-2xl font-extrabold text-white tracking-tight">{project.title}</h3>
+                <h3 className="text-2xl font-extrabold tracking-tight" style={{ color: 'var(--text-primary)' }}>{project.title}</h3>
                 {project.liveUrl && (
                   <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 rounded-full text-white text-sm font-bold hover:opacity-90 transition-opacity flex-shrink-0"
-                    style={{ background: 'linear-gradient(135deg,#7c3aed,#0891b2)' }}
+                    style={{ background: 'linear-gradient(135deg,#2563eb,#f59e0b)' }}
                   >
                     Live Demo <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 )}
               </div>
-              <p className="leading-relaxed mb-6" style={{ color: '#64748b' }}>{project.summary}</p>
+              <p className="leading-relaxed mb-6" style={{ color: 'var(--text-muted)' }}>{project.summary}</p>
               <div className="flex flex-wrap gap-2">
                 {project.techStack.map(tech => (
                   <span
                     key={tech}
                     className="px-3 py-1.5 rounded-full text-xs font-semibold"
-                    style={{ background: 'rgba(124,58,237,0.1)', border: '1px solid rgba(124,58,237,0.2)', color: '#c4b5fd' }}
+                    style={{ background: 'rgba(37,99,235,0.1)', border: '1px solid rgba(37,99,235,0.2)', color: '#93c5fd' }}
                   >
                     {tech}
                   </span>
@@ -146,7 +158,8 @@ const VideoPreviewModal: React.FC<VideoPreviewModalProps> = ({ isOpen, onClose, 
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 

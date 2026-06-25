@@ -1,22 +1,57 @@
 import React from 'react';
 import WindowFrame from './WindowFrame';
+import { aboutData } from '../../data/content';
+import { Code2, Cloud, Brain, Zap } from 'lucide-react';
+
+const iconMap = [Code2, Cloud, Brain, Zap];
 
 const AboutApp: React.FC = () => {
   return (
     <WindowFrame id="about" title="About Me.app" defaultWidth={800} defaultHeight={600} defaultX={50} defaultY={50}>
-      <div className="p-12 flex flex-col justify-center min-h-full">
-        <span className="inline-block py-2 px-5 rounded-full bg-violet-50 border border-violet-100 text-xs font-bold uppercase tracking-widest text-violet-600 mb-8 self-start shadow-sm">
+      <div className="p-10 flex flex-col justify-center min-h-full">
+        <span
+          className="inline-block py-1.5 px-4 rounded-full text-xs font-bold uppercase tracking-widest mb-6 self-start"
+          style={{ background: 'rgba(37,99,235,0.1)', border: '1px solid rgba(37,99,235,0.2)', color: '#93c5fd' }}
+        >
           Available for new opportunities
         </span>
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-slate-900 mb-6 leading-[1.05]">
-          Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-500">Eyeta Daniel.</span>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 leading-[1.05]" style={{ color: 'var(--text-primary)' }}>
+          Hi, I'm{' '}
+          <span
+            className="text-transparent bg-clip-text"
+            style={{ backgroundImage: 'linear-gradient(135deg, #60a5fa, #93c5fd, #fde68a)' }}
+          >
+            {aboutData.name}.
+          </span>
         </h1>
-        <h2 className="text-2xl font-semibold text-slate-500 mb-8 tracking-tight">
-          Software Developer & AI Engineer.
+        <h2 className="text-xl font-semibold mb-6 tracking-tight" style={{ color: 'var(--text-secondary)' }}>
+          {aboutData.role}
         </h2>
-        <p className="text-lg text-slate-600 leading-relaxed font-medium max-w-2xl mb-12">
-          I specialize in building robust cloud infrastructure, full-stack applications, and AI integrations. With a strong focus on clean code and user-centric design, I transform complex technical challenges into seamless, automated digital experiences.
+        <p className="text-base leading-relaxed font-medium max-w-2xl mb-8" style={{ color: 'var(--text-muted)' }}>
+          {aboutData.detailedBio}
         </p>
+
+        {/* Expertise chips */}
+        <div className="grid grid-cols-2 gap-3">
+          {aboutData.expertise.map((item, i) => {
+            const Icon = iconMap[i];
+            return (
+              <div
+                key={item.label}
+                className="flex items-center gap-3 p-3 rounded-xl"
+                style={{ background: 'var(--bg-card)', border: '1px solid var(--border-default)' }}
+              >
+                <div
+                  className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{ background: 'rgba(37,99,235,0.12)' }}
+                >
+                  <Icon className="w-4 h-4" style={{ color: '#60a5fa' }} />
+                </div>
+                <span className="text-xs font-semibold" style={{ color: 'var(--text-secondary)' }}>{item.label}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </WindowFrame>
   );
