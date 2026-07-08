@@ -21,12 +21,12 @@ const Projects: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <p className="text-sm font-bold uppercase tracking-widest mb-4" style={{ color: '#60a5fa' }}>Selected Work</p>
+          <p className="text-sm font-bold uppercase tracking-widest mb-4" style={{ color: '#f0436a' }}>Selected Work</p>
           <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 leading-tight" style={{ color: 'var(--text-primary)' }}>
             Projects &amp;{' '}
             <span
               className="text-transparent bg-clip-text"
-              style={{ backgroundImage: 'linear-gradient(135deg,#60a5fa,#f5c542)' }}
+              style={{ backgroundImage: 'linear-gradient(135deg,#f0436a,#7c3aed)' }}
             >
               Case Studies
             </span>

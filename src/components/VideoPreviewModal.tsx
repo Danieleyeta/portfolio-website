@@ -109,13 +109,13 @@ const VideoPreviewModal: React.FC<VideoPreviewModalProps> = ({ isOpen, onClose, 
               ) : (
                 <div
                   className="w-full h-full flex flex-col items-center justify-center gap-4"
-                  style={{ background: 'linear-gradient(135deg,rgba(37,99,235,0.15),rgba(245,158,11,0.1))' }}
+                  style={{ background: 'linear-gradient(135deg,rgba(240,67,106,0.15),rgba(124,58,237,0.1))' }}
                 >
                   <div
                     className="w-20 h-20 rounded-full flex items-center justify-center"
-                    style={{ background: 'rgba(37,99,235,0.2)', border: '1px solid rgba(37,99,235,0.3)' }}
+                    style={{ background: 'rgba(240,67,106,0.2)', border: '1px solid rgba(240,67,106,0.3)' }}
                   >
-                    <svg className="w-8 h-8" style={{ color: '#60a5fa' }} fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8" style={{ color: '#f0436a' }} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
@@ -136,7 +136,7 @@ const VideoPreviewModal: React.FC<VideoPreviewModalProps> = ({ isOpen, onClose, 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 rounded-full text-white text-sm font-bold hover:opacity-90 transition-opacity flex-shrink-0"
-                    style={{ background: 'linear-gradient(135deg,#2563eb,#f59e0b)' }}
+                    style={{ background: 'linear-gradient(135deg,#f0436a,#7c3aed)' }}
                   >
                     Live Demo <ExternalLink className="w-3.5 h-3.5" />
                   </a>
@@ -148,7 +148,7 @@ const VideoPreviewModal: React.FC<VideoPreviewModalProps> = ({ isOpen, onClose, 
                   <span
                     key={tech}
                     className="px-3 py-1.5 rounded-full text-xs font-semibold"
-                    style={{ background: 'rgba(37,99,235,0.1)', border: '1px solid rgba(37,99,235,0.2)', color: '#93c5fd' }}
+                    style={{ background: 'rgba(240,67,106,0.1)', border: '1px solid rgba(240,67,106,0.2)', color: '#ff7096' }}
                   >
                     {tech}
                   </span>

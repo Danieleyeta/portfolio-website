@@ -12,9 +12,9 @@ const Particles = () => {
     const colors = new Float32Array(particleCount * 3);
     
     const colorOptions = [
-      new THREE.Color('#3b82f6'), // electric blue
-      new THREE.Color('#38bdf8'), // sky blue
-      new THREE.Color('#f59e0b'), // amber
+      new THREE.Color('#f0436a'), // hot pink
+      new THREE.Color('#7c3aed'), // violet
+      new THREE.Color('#ff7096'), // light pink
     ];
 
     for (let i = 0; i < particleCount; i++) {

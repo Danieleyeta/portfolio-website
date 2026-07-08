@@ -27,7 +27,7 @@ const TechMarquee: React.FC = () => {
             style={{ color: 'var(--marquee-color)' }}
           >
             {tech}
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'rgba(37,99,235,0.4)' }} />
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'rgba(240,67,106,0.4)' }} />
           </span>
         ))}
       </div>

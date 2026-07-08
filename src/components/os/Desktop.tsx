@@ -29,7 +29,7 @@ const Desktop: React.FC<DesktopProps> = ({ onExitDesktop }) => {
 
       {/* Gradient wallpaper overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'radial-gradient(ellipse at 30% 20%, rgba(37,99,235,0.15) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(245,158,11,0.1) 0%, transparent 50%)'
+        background: 'radial-gradient(ellipse at 30% 20%, rgba(240,67,106,0.15) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(124,58,237,0.1) 0%, transparent 50%)'
       }} />
       <div className="absolute inset-0 dot-grid pointer-events-none opacity-50" />
 

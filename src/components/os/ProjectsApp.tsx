@@ -12,7 +12,7 @@ const ProjectsApp: React.FC = () => {
             <h2 className="text-3xl font-extrabold tracking-tighter mb-1" style={{ color: 'var(--text-primary)' }}>Selected Work</h2>
             <p className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>A collection of projects showcasing scalable architecture.</p>
           </div>
-          <span className="text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full" style={{ background: 'rgba(37,99,235,0.1)', border: '1px solid rgba(37,99,235,0.2)', color: '#60a5fa' }}>
+          <span className="text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full" style={{ background: 'rgba(240,67,106,0.1)', border: '1px solid rgba(240,67,106,0.2)', color: '#f0436a' }}>
             {projectsData.length} Projects
           </span>
         </div>

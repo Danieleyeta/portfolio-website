@@ -43,7 +43,7 @@ const Navbar: React.FC<NavbarProps> = ({ onEnterDesktop }) => {
           <a href="#" className="text-xl font-extrabold tracking-tighter flex items-center gap-2.5" style={{ color: 'var(--text-primary)' }}>
             <span
               className="w-3 h-3 rounded-full animate-pulse"
-              style={{ background: 'linear-gradient(135deg,#3b82f6,#f59e0b)', boxShadow: '0 0 12px rgba(37,99,235,0.6)' }}
+              style={{ background: 'linear-gradient(135deg,#f0436a,#7c3aed)', boxShadow: '0 0 12px rgba(240,67,106,0.6)' }}
             />
             Eyeta.
           </a>
@@ -94,10 +94,10 @@ const Navbar: React.FC<NavbarProps> = ({ onEnterDesktop }) => {
 
             <a
               href="#contact"
-              className="px-5 py-2.5 rounded-full text-white text-sm font-bold hover:opacity-90 transition-opacity"
-              style={{ background: 'linear-gradient(135deg,#2563eb,#f59e0b)', boxShadow: '0 4px 20px rgba(37,99,235,0.3)' }}
+              className="px-5 py-2.5 rounded-full text-sm font-bold transition-all hover:bg-pink-500/10"
+              style={{ border: '1px solid #f0436a', color: 'var(--text-primary)' }}
             >
-              Hire Me
+              Book a Call
             </a>
           </nav>
 
@@ -168,10 +168,10 @@ const Navbar: React.FC<NavbarProps> = ({ onEnterDesktop }) => {
                 <a
                   href="#contact"
                   onClick={() => setMenuOpen(false)}
-                  className="mt-2 px-5 py-3 rounded-full text-white text-sm font-bold text-center"
-                  style={{ background: 'linear-gradient(135deg,#2563eb,#f59e0b)' }}
+                  className="mt-2 px-5 py-3 rounded-full text-sm font-bold text-center"
+                  style={{ border: '1px solid #f0436a', color: 'var(--text-primary)' }}
                 >
-                  Hire Me
+                  Book a Call
                 </a>
               </div>
             </motion.div>

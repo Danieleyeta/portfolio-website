@@ -44,6 +44,27 @@ export const projectsData: Project[] = [
     category: 'Frontend',
     githubUrl: 'https://github.com/Danieleyeta/demo-frontend-eco',
   },
+  {
+    title: 'X (Twitter) AI Thread Auto-Poster',
+    summary: 'Fully automated n8n workflow that discovers trending tech/AI news daily, generates 5-tweet threads via Groq AI, sends an approval email before posting, and schedules tweets at peak engagement times.',
+    techStack: ['n8n', 'Groq AI', 'Tavily', 'Twitter API', 'Gmail'],
+    category: 'AI / Automation',
+    githubUrl: 'https://github.com/Danieleyeta/twitter-x-auto-poster',
+  },
+  {
+    title: 'LinkedIn AI Content Creator',
+    summary: 'End-to-end LinkedIn automation that finds trending AI topics, generates posts and infographics via AI, routes them through an email approval gate, and publishes at peak engagement windows — all without manual intervention.',
+    techStack: ['n8n', 'Groq AI', 'Tavily', 'LinkedIn API', 'Google Sheets'],
+    category: 'AI / Automation',
+    githubUrl: 'https://github.com/Danieleyeta/linkedin-content-creator',
+  },
+  {
+    title: 'MarketBook',
+    summary: 'A React + TypeScript marketplace application with a Dockerised full-stack setup, covering both frontend and backend services with clean component architecture.',
+    techStack: ['React', 'TypeScript', 'Vite', 'Docker', 'Node.js'],
+    category: 'Full-Stack',
+    githubUrl: 'https://github.com/Danieleyeta/MarketBook',
+  },
 ];
 
 export const aboutData = {

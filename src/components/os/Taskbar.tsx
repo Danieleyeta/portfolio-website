@@ -44,9 +44,9 @@ const Taskbar: React.FC = () => {
                 onClick={() => handleAppClick(app.id)}
                 className="p-3 rounded-xl transition-all duration-300 relative cursor-pointer"
                 style={{
-                  background: isActive ? 'rgba(37,99,235,0.2)' : 'var(--bg-subtle)',
-                  border: isActive ? '1px solid rgba(37,99,235,0.3)' : '1px solid transparent',
-                  color: isActive ? '#93c5fd' : 'var(--text-muted)',
+                  background: isActive ? 'rgba(240,67,106,0.2)' : 'var(--bg-subtle)',
+                  border: isActive ? '1px solid rgba(240,67,106,0.3)' : '1px solid transparent',
+                  color: isActive ? '#ff7096' : 'var(--text-muted)',
                 }}
               >
                 {app.icon}

@@ -33,7 +33,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onPreview }) 
       {typeof index === 'number' && (
         <span
           className="absolute top-6 right-8 text-7xl font-extrabold leading-none pointer-events-none select-none"
-          style={{ color: 'rgba(37,99,235,0.06)' }}
+          style={{ color: 'rgba(240,67,106,0.06)' }}
         >
           {String(index + 1).padStart(2, '0')}
         </span>
@@ -43,7 +43,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onPreview }) 
       {project.category && (
         <span
           className="inline-block mb-5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest w-fit"
-          style={{ background: 'rgba(37,99,235,0.1)', border: '1px solid rgba(37,99,235,0.2)', color: '#60a5fa' }}
+          style={{ background: 'rgba(240,67,106,0.1)', border: '1px solid rgba(240,67,106,0.2)', color: '#f0436a' }}
         >
           {project.category}
         </span>
@@ -75,7 +75,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onPreview }) 
           <button
             onClick={onPreview}
             className="flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all"
-            style={{ background: 'linear-gradient(135deg,#2563eb,#f59e0b)', boxShadow: '0 4px 20px rgba(37,99,235,0.3)' }}
+            style={{ background: 'linear-gradient(135deg,#f0436a,#7c3aed)', boxShadow: '0 4px 20px rgba(240,67,106,0.3)' }}
           >
             <Play className="w-3.5 h-3.5 fill-white" />
             Preview Project

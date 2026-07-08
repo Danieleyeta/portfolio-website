@@ -87,8 +87,8 @@ const CommandPalette: React.FC = () => {
 
               <div className="overflow-y-auto p-2">
                 {agentResponse || isTyping ? (
-                  <div className="p-6 rounded-xl m-2" style={{ background: 'rgba(37,99,235,0.08)', border: '1px solid rgba(37,99,235,0.15)' }}>
-                    <div className="flex items-center gap-2 mb-3 text-blue-400 font-bold text-sm uppercase tracking-widest">
+                  <div className="p-6 rounded-xl m-2" style={{ background: 'rgba(240,67,106,0.08)', border: '1px solid rgba(240,67,106,0.15)' }}>
+                    <div className="flex items-center gap-2 mb-3 text-pink-400 font-bold text-sm uppercase tracking-widest">
                       <Bot className="w-4 h-4" /> AI Agent
                     </div>
                     {isTyping ? (

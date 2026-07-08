@@ -11,7 +11,7 @@ const AboutApp: React.FC = () => {
       <div className="p-10 flex flex-col justify-center min-h-full">
         <span
           className="inline-block py-1.5 px-4 rounded-full text-xs font-bold uppercase tracking-widest mb-6 self-start"
-          style={{ background: 'rgba(37,99,235,0.1)', border: '1px solid rgba(37,99,235,0.2)', color: '#93c5fd' }}
+          style={{ background: 'rgba(240,67,106,0.1)', border: '1px solid rgba(240,67,106,0.2)', color: '#ff7096' }}
         >
           Available for new opportunities
         </span>
@@ -19,7 +19,7 @@ const AboutApp: React.FC = () => {
           Hi, I'm{' '}
           <span
             className="text-transparent bg-clip-text"
-            style={{ backgroundImage: 'linear-gradient(135deg, #60a5fa, #93c5fd, #fde68a)' }}
+            style={{ backgroundImage: 'linear-gradient(135deg, #f0436a, #c084fc, #fb7185)' }}
           >
             {aboutData.name}.
           </span>
@@ -43,9 +43,9 @@ const AboutApp: React.FC = () => {
               >
                 <div
                   className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                  style={{ background: 'rgba(37,99,235,0.12)' }}
+                  style={{ background: 'rgba(240,67,106,0.12)' }}
                 >
-                  <Icon className="w-4 h-4" style={{ color: '#60a5fa' }} />
+                  <Icon className="w-4 h-4" style={{ color: '#f0436a' }} />
                 </div>
                 <span className="text-xs font-semibold" style={{ color: 'var(--text-secondary)' }}>{item.label}</span>
               </div>

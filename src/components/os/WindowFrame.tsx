@@ -43,7 +43,7 @@ const WindowFrame: React.FC<WindowFrameProps> = ({
       style={{ zIndex: windowState.zIndex, width: defaultWidth, height: defaultHeight, left: defaultX, top: defaultY }}
       className={`absolute flex flex-col rounded-2xl overflow-hidden transition-shadow duration-300 ${
         isFocused
-          ? 'shadow-[0_20px_60px_rgba(0,0,0,0.5)] ring-1 ring-blue-500/30'
+          ? 'shadow-[0_20px_60px_rgba(0,0,0,0.5)] ring-1 ring-pink-500/30'
           : `shadow-[0_8px_30px_rgba(0,0,0,0.3)] ${unfocusedRing} opacity-90`
       }`}
     >
