@@ -1,193 +1,104 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail } from 'lucide-react';
+import { ArrowUpRight, Github, Linkedin, Sparkles, Twitter } from 'lucide-react';
+import heroArtwork from '../assets/hero-ai-sculpture.jpg';
+import { aboutInfo, contactInfo } from '../data/about';
 
-const GithubIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
-    <path d="M9 18c-4.51 2-5-2-7-2"/>
-  </svg>
-);
+const socialIcons = {
+  GitHub: Github,
+  LinkedIn: Linkedin,
+  Twitter,
+};
 
-const LinkedinIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-    <rect width="4" height="12" x="2" y="9"/>
-    <circle cx="4" cy="4" r="2"/>
-  </svg>
-);
-
-const DOTS = [
-  { top: '12%', left: '6%', size: 8 }, { top: '28%', left: '40%', size: 6 },
-  { top: '18%', left: '72%', size: 8 }, { top: '55%', left: '18%', size: 6 },
-  { top: '42%', left: '88%', size: 8 }, { top: '70%', left: '60%', size: 6 },
-  { top: '82%', left: '30%', size: 8 }, { top: '65%', left: '80%', size: 6 },
-  { top: '38%', left: '52%', size: 4 }, { top: '90%', left: '78%', size: 6 },
-  { top: '8%',  left: '55%', size: 4 }, { top: '75%', left: '5%',  size: 6 },
-];
-
-const Hero: React.FC = () => {
+const Hero = () => {
   return (
-    <section className="min-h-screen relative overflow-hidden flex items-center pt-24 pb-16 noise-overlay">
-      {/* Background glow blobs */}
-      <motion.div
-        animate={{ scale: [1, 1.2, 1], rotate: [0, 80, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-        className="absolute top-1/3 right-1/4 w-[700px] h-[700px] rounded-full pointer-events-none blur-3xl opacity-[0.12]"
-        style={{ background: 'conic-gradient(from 0deg, #f0436a, #7c3aed, #f0436a)' }}
-      />
-      <div
-        className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none blur-3xl opacity-[0.07]"
-        style={{ background: 'radial-gradient(circle, #7c3aed, transparent 70%)' }}
-      />
-      <div
-        className="absolute top-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none blur-3xl opacity-[0.06]"
-        style={{ background: 'radial-gradient(circle, #f0436a, transparent 70%)' }}
-      />
+    <section id="hero" className="section section-light-texture relative flex min-h-screen items-center overflow-hidden pt-28">
+      <div className="container relative z-10">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="animate-fade-in">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-dark-border bg-dark-surface/80 px-4 py-2 text-sm font-medium text-dark-muted shadow-sm backdrop-blur">
+              <Sparkles size={16} className="text-accent-primary" />
+              Software, AI, cloud, and automation
+            </div>
 
-      {/* Dot grid */}
-      <div className="absolute inset-0 dot-grid pointer-events-none opacity-40" />
+            <p className="section-tag mb-3">need a</p>
+            <h1 className="mb-6 text-5xl font-black leading-[0.96] tracking-[-0.055em] sm:text-6xl lg:text-7xl xl:text-8xl">
+              Software Developer
+              <br />
+              <span className="gradient-text">&amp; AI Engineer?</span>
+            </h1>
 
-      {/* Scattered glowing dots */}
-      {DOTS.map((dot, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            top: dot.top,
-            left: dot.left,
-            width: dot.size,
-            height: dot.size,
-            background: '#34d399',
-            boxShadow: `0 0 ${dot.size * 2}px #34d399`,
-          }}
-          animate={{ opacity: [0.4, 1, 0.4], scale: [0.9, 1.1, 0.9] }}
-          transition={{ duration: 2.5 + i * 0.3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.2 }}
-        />
-      ))}
+            <p className="mb-8 max-w-2xl text-lg leading-relaxed text-dark-muted md:text-xl">
+              I turn <strong className="text-dark-text">complex requirements</strong> into elegant systems that scale by combining modern product engineering with practical AI automation.
+            </p>
 
-      <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-        <div className="max-w-3xl">
-
-          {/* Name */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-4 leading-[0.95]"
-            style={{ color: 'var(--text-primary)' }}
-          >
-            I&apos;m{' '}
-            <span
-              className="text-transparent bg-clip-text"
-              style={{ backgroundImage: 'linear-gradient(135deg, #f0436a, #c084fc, #fb7185)' }}
-            >
-              Eyeta Daniel
-            </span>
-            .
-          </motion.h1>
-
-          {/* Role: large pink */}
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-8 leading-tight tracking-tight"
-            style={{ color: '#f0436a' }}
-          >
-            Software Developer
-            <br />
-            <span style={{ color: '#c084fc' }}>&amp; AI Engineer</span>
-          </motion.h2>
-
-          {/* Bio */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-lg leading-relaxed mb-10 max-w-xl"
-            style={{ color: 'var(--text-muted)' }}
-          >
-            I build robust cloud infrastructure, full-stack applications, and AI-powered automations.
-            Turning complex technical challenges into seamless digital experiences.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-wrap items-center gap-4 mb-12"
-          >
-            <a
-              href="#contact"
-              className="px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:-translate-y-0.5 transition-all backdrop-blur-xl"
-              style={{
-                border: '1px solid var(--border-stronger)',
-                background: 'var(--bg-subtle)',
-                color: 'var(--text-primary)',
-              }}
-            >
-              Let&apos;s Connect
-            </a>
-            <a
-              href="#projects"
-              className="px-8 py-4 rounded-full text-white font-bold text-sm uppercase tracking-widest hover:opacity-90 transition-all hover:-translate-y-0.5"
-              style={{ background: 'linear-gradient(135deg,#f0436a,#7c3aed)', boxShadow: '0 8px 30px rgba(240,67,106,0.35)' }}
-            >
-              View My Work
-            </a>
-          </motion.div>
-
-          {/* Social links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="flex items-center gap-3"
-          >
-            {[
-              { icon: <GithubIcon />, href: 'https://github.com/Danieleyeta', label: 'GitHub' },
-              { icon: <LinkedinIcon />, href: 'https://linkedin.com', label: 'LinkedIn' },
-              { icon: <Mail className="w-5 h-5" />, href: 'mailto:danieleyeta1234@gmail.com', label: 'Email' },
-            ].map(({ icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="w-11 h-11 rounded-full flex items-center justify-center transition-all hover:scale-110 backdrop-blur-xl hover:border-pink-500/40"
-                style={{
-                  border: '1px solid var(--border-strong)',
-                  background: 'var(--bg-subtle)',
-                  color: 'var(--text-muted)',
-                }}
-              >
-                {icon}
+            <div className="flex flex-wrap items-center gap-4">
+              <a href="#work" className="btn-primary group rounded-full px-7 py-4">
+                View My Work
+                <ArrowUpRight className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" size={20} />
               </a>
-            ))}
-          </motion.div>
+              <a href="#contact" className="btn-secondary rounded-full px-7 py-4">
+                Start a project
+              </a>
+            </div>
+
+            <div className="mt-10 grid max-w-2xl grid-cols-2 overflow-hidden rounded-2xl border border-dark-border bg-dark-surface/75 shadow-xl shadow-black/5 backdrop-blur sm:grid-cols-4">
+              {aboutInfo.stats.map((stat) => (
+                <div key={stat.label} className="border-dark-border p-4 sm:border-r sm:last:border-r-0">
+                  <div className="text-2xl font-black text-accent-primary md:text-3xl">{stat.value}</div>
+                  <div className="mt-1 text-xs leading-snug text-dark-muted">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex items-center gap-4">
+              <span className="text-sm font-semibold">Let&apos;s Connect</span>
+              <div className="flex gap-2">
+                {contactInfo.socials.map((social) => {
+                  const Icon = socialIcons[social.platform as keyof typeof socialIcons];
+                  return (
+                    <a
+                      key={social.platform}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-dark-border bg-dark-surface transition-all hover:-translate-y-1 hover:border-accent-primary hover:text-accent-primary"
+                      aria-label={social.platform}
+                    >
+                      {Icon ? <Icon size={18} /> : social.platform.charAt(0)}
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-md lg:mx-auto">
+            <div className="hero-art-halo absolute inset-8 rounded-[3rem]" aria-hidden="true" />
+            <div className="hero-art-card relative overflow-hidden rounded-[2.5rem] border border-dark-border bg-dark-surface shadow-2xl shadow-accent-primary/15">
+              <img
+                src={heroArtwork}
+                alt="Abstract glass and chrome AI sculpture"
+                className="aspect-[4/5] h-full w-full object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#080810] via-[#080810]/70 to-transparent p-7 pt-24 text-white">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">Engineering approach</p>
+                <p className="mt-2 text-2xl font-bold">Build. Integrate. Scale.</p>
+              </div>
+              <div className="hero-scan-line absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-primary to-transparent" />
+            </div>
+
+            <div className="hero-float-badge absolute -left-4 top-10 rounded-2xl border border-dark-border bg-dark-surface/95 p-3.5 shadow-xl backdrop-blur">
+              <span className="mb-2 block h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399]" />
+              <strong className="block text-sm">Systems online</strong>
+              <span className="text-xs text-dark-muted">Production focused</span>
+            </div>
+
+            <div className="hero-float-badge absolute -bottom-4 -right-3 rounded-2xl border border-dark-border bg-dark-surface/95 p-3.5 shadow-xl backdrop-blur [animation-delay:-1.5s]">
+              <span className="text-xs uppercase tracking-wider text-dark-muted">Core signal</span>
+              <strong className="mt-1 block text-lg gradient-text">AI × Full Stack</strong>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--text-faintest)' }}>Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-5 h-8 rounded-full border flex items-start justify-center pt-1.5"
-          style={{ borderColor: 'var(--border-stronger)' }}
-        >
-          <motion.div className="w-1 h-2 rounded-full" style={{ background: '#f0436a' }} />
-        </motion.div>
-      </motion.div>
     </section>
   );
 };

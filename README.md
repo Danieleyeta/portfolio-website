@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+# Eyeta Daniel Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive portfolio for Eyeta Daniel, a Software Developer and AI Engineer. The site presents selected projects, services, technical capabilities, working process, and contact information.
 
-Currently, two official plugins are available:
+## Design
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The visual direction is inspired by [shagzz.zynthieraa.com](https://shagzz.zynthieraa.com/) and adapted into a distinct portfolio experience with:
 
-## React Compiler
+- Alternating off-white and dark sections
+- Light and dark theme support
+- Responsive, mobile-first layouts
+- Subtle motion with reduced-motion support
+- Advanced, code-rendered project visuals
+- A focused technical stack presentation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technology
 
-## Expanding the ESLint configuration
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- Lucide React
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Commands
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
+npm run lint
+npm run build
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The production build is written to `dist/`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Project structure
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+src/
+|-- assets/
+|   `-- hero-ai-sculpture.jpg
+|-- components/
+|   |-- About.tsx
+|   |-- Contact.tsx
+|   |-- Footer.tsx
+|   |-- Hero.tsx
+|   |-- Navigation.tsx
+|   |-- Process.tsx
+|   |-- Services.tsx
+|   |-- TechStack.tsx
+|   `-- Work.tsx
+|-- data/
+|   |-- about.ts
+|   |-- process.ts
+|   |-- projects.ts
+|   |-- services.ts
+|   `-- techStack.ts
+|-- App.tsx
+|-- index.css
+|-- main.tsx
+`-- vite-env.d.ts
 ```
+
+## Content updates
+
+- Personal and contact information: `src/data/about.ts`
+- Projects and links: `src/data/projects.ts`
+- Services: `src/data/services.ts`
+- Process steps and principles: `src/data/process.ts`
+- Featured technologies: `src/data/techStack.ts`
+- Theme variables and global styles: `src/index.css`
+- Tailwind tokens and animations: `tailwind.config.js`
+
+## Deployment
+
+Run `npm run build`, then deploy the generated `dist/` directory to a static hosting provider such as Vercel, Netlify, GitHub Pages, or Azure Static Web Apps.
+
+Copyright 2026 Eyeta Daniel. All rights reserved.
