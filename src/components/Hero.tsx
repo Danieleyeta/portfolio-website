@@ -1,5 +1,5 @@
 import { ArrowUpRight, Github, Linkedin, Sparkles, Twitter } from 'lucide-react';
-import heroArtwork from '../assets/hero-ai-sculpture.jpg';
+import heroPortrait from '../assets/eyeta-daniel-cutout.png';
 import { aboutInfo, contactInfo } from '../data/about';
 
 const socialIcons = {
@@ -13,7 +13,7 @@ const Hero = () => {
     <section id="hero" className="section section-light-texture relative flex min-h-screen items-center overflow-hidden pt-28">
       <div className="container relative z-10">
         <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="animate-fade-in">
+          <div className="min-w-0 animate-fade-in">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-dark-border bg-dark-surface/80 px-4 py-2 text-sm font-medium text-dark-muted shadow-sm backdrop-blur">
               <Sparkles size={16} className="text-accent-primary" />
               Software, AI, cloud, and automation
@@ -73,17 +73,18 @@ const Hero = () => {
 
           <div className="relative mx-auto w-full max-w-md lg:mx-auto">
             <div className="hero-art-halo absolute inset-8 rounded-[3rem]" aria-hidden="true" />
-            <div className="hero-art-card relative overflow-hidden rounded-[2.5rem] border border-dark-border bg-dark-surface shadow-2xl shadow-accent-primary/15">
+            <div className="hero-art-card relative isolate aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-dark-border bg-dark-surface shadow-2xl shadow-accent-primary/15">
+              <div className="hero-portrait-backdrop absolute inset-0" aria-hidden="true" />
               <img
-                src={heroArtwork}
-                alt="Abstract glass and chrome AI sculpture"
-                className="aspect-[4/5] h-full w-full object-cover"
+                src={heroPortrait}
+                alt="Eyeta Daniel, Software Developer and AI Engineer"
+                className="absolute inset-x-0 bottom-0 z-10 h-[96%] w-full scale-[1.06] object-contain object-bottom"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#080810] via-[#080810]/70 to-transparent p-7 pt-24 text-white">
+              <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-[#080810] via-[#080810]/70 to-transparent p-7 pt-24 text-white">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">Engineering approach</p>
                 <p className="mt-2 text-2xl font-bold">Build. Integrate. Scale.</p>
               </div>
-              <div className="hero-scan-line absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-primary to-transparent" />
+              <div className="hero-scan-line absolute inset-x-0 top-0 z-30 h-px bg-gradient-to-r from-transparent via-accent-primary to-transparent" />
             </div>
 
             <div className="hero-float-badge absolute -left-4 top-10 rounded-2xl border border-dark-border bg-dark-surface/95 p-3.5 shadow-xl backdrop-blur">
