@@ -4,7 +4,14 @@ export interface AboutInfo {
   shortBio: string;
   fullBio: string[];
   stats: Stat[];
-  expertise: string[];
+  expertise: Expertise[];
+}
+
+export type ExpertiseIcon = 'code' | 'cloud' | 'brain' | 'workflow';
+
+export interface Expertise {
+  name: string;
+  icon: ExpertiseIcon;
 }
 
 export interface Stat {
@@ -28,10 +35,10 @@ export const aboutInfo: AboutInfo = {
     { value: "100%", label: "Commitment" }
   ],
   expertise: [
-    "Full-Stack Development",
-    "Cloud Infrastructure",
-    "AI Engineering",
-    "Workflow Automation"
+    { name: "Full-Stack Development", icon: "code" },
+    { name: "Cloud Infrastructure", icon: "cloud" },
+    { name: "AI Engineering", icon: "brain" },
+    { name: "Workflow Automation", icon: "workflow" }
   ]
 };
 
@@ -43,9 +50,11 @@ export interface ContactInfo {
 }
 
 export interface Social {
-  platform: string;
+  platform: SocialPlatform;
   url: string;
 }
+
+export type SocialPlatform = 'GitHub' | 'LinkedIn' | 'Twitter';
 
 export const contactInfo: ContactInfo = {
   email: "danieleyeta1234@gmail.com",

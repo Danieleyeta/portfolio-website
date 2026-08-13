@@ -1,40 +1,30 @@
 import { useState, useEffect } from 'react';
 import { Menu, Moon, Sun, X } from 'lucide-react';
-
-type Theme = 'light' | 'dark';
+import { primaryNavigation } from '../data/navigation';
+import { persistTheme, readStoredTheme, type Theme } from '../utils/theme';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<Theme>(() => {
-    const savedTheme = window.localStorage.getItem('portfolio-theme');
-    return savedTheme === 'dark' ? 'dark' : 'light';
-  });
+  const [theme, setTheme] = useState<Theme>(() => readStoredTheme() ?? 'light');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
     const isDark = theme === 'dark';
     document.documentElement.classList.toggle('theme-dark', isDark);
-    window.localStorage.setItem('portfolio-theme', theme);
+    persistTheme(theme);
     document
       .querySelector('meta[name="theme-color"]')
       ?.setAttribute('content', isDark ? '#080810' : '#f3f3f6');
   }, [theme]);
-
-  const navLinks = [
-    { href: '#about', label: 'About' },
-    { href: '#stack', label: 'Stack' },
-    { href: '#services', label: 'Services' },
-    { href: '#work', label: 'Work' },
-    { href: '#process', label: 'Process' },
-  ];
 
   return (
     <nav
@@ -51,7 +41,7 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {primaryNavigation.map((link) => (
               <li key={link.href}>
                 <a href={link.href} className="nav-link">
                   {link.label}
@@ -91,7 +81,7 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-20 left-0 right-0 bg-dark-surface border-b border-dark-border animate-slide-down">
             <ul className="flex flex-col p-4 gap-4">
-              {navLinks.map((link) => (
+              {primaryNavigation.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}

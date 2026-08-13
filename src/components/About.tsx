@@ -1,7 +1,12 @@
-import { BrainCircuit, Cloud, Code2, Workflow } from 'lucide-react';
-import { aboutInfo } from '../data/about';
+import { BrainCircuit, Cloud, Code2, Workflow, type LucideIcon } from 'lucide-react';
+import { aboutInfo, type ExpertiseIcon } from '../data/about';
 
-const expertiseIcons = [Code2, Cloud, BrainCircuit, Workflow];
+const expertiseIcons: Record<ExpertiseIcon, LucideIcon> = {
+  code: Code2,
+  cloud: Cloud,
+  brain: BrainCircuit,
+  workflow: Workflow,
+};
 
 const About = () => {
   return (
@@ -44,13 +49,13 @@ const About = () => {
 
               <div className="grid grid-cols-2 gap-px bg-dark-border">
                 {aboutInfo.expertise.map((skill, index) => {
-                  const Icon = expertiseIcons[index];
+                  const Icon = expertiseIcons[skill.icon];
                   return (
-                    <article key={skill} className="group bg-dark-surface p-6 transition-colors hover:bg-dark-bg">
+                    <article key={skill.name} className="group bg-dark-surface p-6 transition-colors hover:bg-dark-bg">
                       <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-accent-primary/10 text-accent-primary transition-transform group-hover:scale-110">
                         <Icon size={24} />
                       </div>
-                      <h4 className="font-bold leading-snug">{skill}</h4>
+                      <h4 className="font-bold leading-snug">{skill.name}</h4>
                       <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-dark-border">
                         <div className="h-full rounded-full bg-gradient-to-r from-accent-primary to-accent-secondary" style={{ width: `${88 - index * 4}%` }} />
                       </div>

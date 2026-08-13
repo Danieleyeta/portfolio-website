@@ -1,12 +1,7 @@
-import { ArrowUpRight, Github, Linkedin, Sparkles, Twitter } from 'lucide-react';
-import heroPortrait from '../assets/eyeta-daniel-cutout.png';
-import { aboutInfo, contactInfo } from '../data/about';
-
-const socialIcons = {
-  GitHub: Github,
-  LinkedIn: Linkedin,
-  Twitter,
-};
+import { ArrowUpRight, Sparkles } from 'lucide-react';
+import heroPortrait from '../assets/eyeta-daniel-cutout.webp';
+import { aboutInfo } from '../data/about';
+import SocialLinks from './SocialLinks';
 
 const Hero = () => {
   return (
@@ -51,23 +46,7 @@ const Hero = () => {
 
             <div className="mt-8 flex items-center gap-4">
               <span className="text-sm font-semibold">Let&apos;s Connect</span>
-              <div className="flex gap-2">
-                {contactInfo.socials.map((social) => {
-                  const Icon = socialIcons[social.platform as keyof typeof socialIcons];
-                  return (
-                    <a
-                      key={social.platform}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-dark-border bg-dark-surface transition-all hover:-translate-y-1 hover:border-accent-primary hover:text-accent-primary"
-                      aria-label={social.platform}
-                    >
-                      {Icon ? <Icon size={18} /> : social.platform.charAt(0)}
-                    </a>
-                  );
-                })}
-              </div>
+              <SocialLinks variant="hero" />
             </div>
           </div>
 
@@ -78,6 +57,10 @@ const Hero = () => {
               <img
                 src={heroPortrait}
                 alt="Eyeta Daniel, Software Developer and AI Engineer"
+                width={1024}
+                height={1536}
+                decoding="async"
+                fetchPriority="high"
                 className="absolute inset-x-0 bottom-0 z-10 h-[96%] w-full scale-[1.06] object-contain object-bottom"
               />
               <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-[#080810] via-[#080810]/70 to-transparent p-7 pt-24 text-white">

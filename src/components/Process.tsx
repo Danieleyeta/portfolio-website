@@ -1,7 +1,7 @@
-import { Check, Code, FileText, Layout, Rocket, Search } from 'lucide-react';
-import { processHighlights, processSteps } from '../data/process';
+import { Check, Code, FileText, Layout, Rocket, Search, type LucideIcon } from 'lucide-react';
+import { processHighlights, processSteps, type ProcessIcon } from '../data/process';
 
-const iconMap = {
+const iconMap: Record<ProcessIcon, LucideIcon> = {
   search: Search,
   layout: Layout,
   code: Code,
@@ -23,7 +23,7 @@ const Process = () => {
         <div className="relative grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           <div className="absolute left-[12.5%] right-[12.5%] top-16 hidden border-t-2 border-dashed border-accent-primary/30 lg:block" aria-hidden="true" />
           {processSteps.map((step) => {
-            const Icon = iconMap[step.icon as keyof typeof iconMap];
+            const Icon = iconMap[step.icon];
             return (
               <article key={step.number} className="group relative z-10 text-center">
                 <div className="mx-auto mb-5 flex h-32 w-32 items-center justify-center rounded-full border border-dark-border bg-dark-surface shadow-xl shadow-black/5 transition-all duration-300 group-hover:-translate-y-2 group-hover:border-accent-primary group-hover:shadow-accent-primary/15">

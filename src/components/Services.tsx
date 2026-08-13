@@ -1,7 +1,7 @@
-import { ArrowUpRight, Brain, Check, Cloud, Code, Workflow } from 'lucide-react';
-import { services } from '../data/services';
+import { ArrowUpRight, Brain, Check, Cloud, Code, Workflow, type LucideIcon } from 'lucide-react';
+import { services, type ServiceIcon } from '../data/services';
 
-const iconMap = {
+const iconMap: Record<ServiceIcon, LucideIcon> = {
   code: Code,
   brain: Brain,
   cloud: Cloud,
@@ -21,7 +21,7 @@ const Services = () => {
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {services.map((service, index) => {
-            const Icon = iconMap[service.icon as keyof typeof iconMap];
+            const Icon = iconMap[service.icon];
             return (
               <article key={service.title} className="service-premium-card group relative flex min-h-[430px] flex-col overflow-hidden rounded-3xl border border-dark-border bg-dark-surface p-6 shadow-lg shadow-black/5">
                 <div className="mb-7 flex items-start justify-between">

@@ -1,17 +1,15 @@
 import { useState } from 'react';
-import { ArrowUpRight, Github, Linkedin, Mail, MapPin, Send, Twitter } from 'lucide-react';
+import { ArrowUpRight, Mail, MapPin, Send } from 'lucide-react';
 import { contactInfo } from '../data/about';
-
-const socialIcons = { GitHub: Github, LinkedIn: Linkedin, Twitter };
+import { buildMailtoUrl, type ContactFormData } from '../utils/contact';
+import SocialLinks from './SocialLinks';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '' });
+  const [formData, setFormData] = useState<ContactFormData>({ firstName: '', lastName: '', email: '', message: '' });
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    const subject = encodeURIComponent(`Portfolio Contact from ${formData.firstName} ${formData.lastName}`);
-    const body = encodeURIComponent(`Name: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-    window.location.href = `mailto:${contactInfo.email}?subject=${subject}&body=${body}`;
+    window.location.assign(buildMailtoUrl(contactInfo.email, formData));
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -45,11 +43,8 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="mt-8 flex items-center gap-3">
-              {contactInfo.socials.map((social) => {
-                const Icon = socialIcons[social.platform as keyof typeof socialIcons];
-                return <a key={social.platform} href={social.url} target="_blank" rel="noopener noreferrer" aria-label={social.platform} className="flex h-11 w-11 items-center justify-center rounded-full border border-dark-border bg-dark-surface transition-all hover:-translate-y-1 hover:border-accent-primary hover:text-accent-primary"><Icon size={19} /></a>;
-              })}
+            <div className="mt-8">
+              <SocialLinks variant="contact" />
             </div>
           </div>
 
@@ -59,11 +54,11 @@ const Contact = () => {
               <span className="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-400">Replies within 24h</span>
             </div>
             <div className="grid gap-5 md:grid-cols-2">
-              <label className="text-sm font-medium">First Name<input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required placeholder="Your first name" className="mt-2 w-full rounded-xl border border-dark-border bg-dark-bg px-4 py-3.5 outline-none transition-colors placeholder:text-dark-muted/60 focus:border-accent-primary" /></label>
-              <label className="text-sm font-medium">Last Name<input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required placeholder="Your last name" className="mt-2 w-full rounded-xl border border-dark-border bg-dark-bg px-4 py-3.5 outline-none transition-colors placeholder:text-dark-muted/60 focus:border-accent-primary" /></label>
+              <label className="text-sm font-medium">First Name<input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required maxLength={80} autoComplete="given-name" placeholder="Your first name" className="mt-2 w-full rounded-xl border border-dark-border bg-dark-bg px-4 py-3.5 outline-none transition-colors placeholder:text-dark-muted/60 focus:border-accent-primary" /></label>
+              <label className="text-sm font-medium">Last Name<input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required maxLength={80} autoComplete="family-name" placeholder="Your last name" className="mt-2 w-full rounded-xl border border-dark-border bg-dark-bg px-4 py-3.5 outline-none transition-colors placeholder:text-dark-muted/60 focus:border-accent-primary" /></label>
             </div>
-            <label className="mt-5 block text-sm font-medium">Email<input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="you@example.com" className="mt-2 w-full rounded-xl border border-dark-border bg-dark-bg px-4 py-3.5 outline-none transition-colors placeholder:text-dark-muted/60 focus:border-accent-primary" /></label>
-            <label className="mt-5 block text-sm font-medium">Message<textarea name="message" value={formData.message} onChange={handleChange} required rows={6} placeholder="Project goals, timeline, and what success looks like..." className="mt-2 w-full resize-none rounded-xl border border-dark-border bg-dark-bg px-4 py-3.5 outline-none transition-colors placeholder:text-dark-muted/60 focus:border-accent-primary" /></label>
+            <label className="mt-5 block text-sm font-medium">Email<input type="email" name="email" value={formData.email} onChange={handleChange} required maxLength={254} autoComplete="email" placeholder="you@example.com" className="mt-2 w-full rounded-xl border border-dark-border bg-dark-bg px-4 py-3.5 outline-none transition-colors placeholder:text-dark-muted/60 focus:border-accent-primary" /></label>
+            <label className="mt-5 block text-sm font-medium">Message<textarea name="message" value={formData.message} onChange={handleChange} required maxLength={2000} rows={6} placeholder="Project goals, timeline, and what success looks like..." className="mt-2 w-full resize-none rounded-xl border border-dark-border bg-dark-bg px-4 py-3.5 outline-none transition-colors placeholder:text-dark-muted/60 focus:border-accent-primary" /></label>
             <button type="submit" className="btn-primary group mt-6 w-full justify-center rounded-xl py-4">
               Send Project Brief
               <Send className="transition-transform group-hover:translate-x-1" size={19} />

@@ -1,10 +1,12 @@
 export interface Service {
-  icon: string;
+  icon: ServiceIcon;
   title: string;
   description: string;
   details: string[];
   tools: string;
 }
+
+export type ServiceIcon = "code" | "brain" | "cloud" | "workflow";
 
 export const services: Service[] = [
   {

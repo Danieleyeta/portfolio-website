@@ -2,8 +2,10 @@ export interface ProcessStep {
   number: string;
   title: string;
   description: string;
-  icon: string;
+  icon: ProcessIcon;
 }
+
+export type ProcessIcon = "search" | "layout" | "code" | "rocket";
 
 export const processSteps: ProcessStep[] = [
   {

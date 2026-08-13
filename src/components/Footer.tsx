@@ -1,5 +1,6 @@
-import { Github, Linkedin, Twitter } from 'lucide-react';
 import { contactInfo, aboutInfo } from '../data/about';
+import { footerNavigation } from '../data/navigation';
+import SocialLinks from './SocialLinks';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,52 +24,21 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#about" className="text-dark-muted hover:text-accent-primary transition-colors">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-dark-muted hover:text-accent-primary transition-colors">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#work" className="text-dark-muted hover:text-accent-primary transition-colors">
-                  Work
-                </a>
-              </li>
-              <li>
-                <a href="#process" className="text-dark-muted hover:text-accent-primary transition-colors">
-                  Process
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-dark-muted hover:text-accent-primary transition-colors">
-                  Contact
-                </a>
-              </li>
+              {footerNavigation.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="text-dark-muted hover:text-accent-primary transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Connect */}
           <div>
             <h3 className="font-semibold mb-4">Connect</h3>
-            <div className="flex gap-3 mb-4">
-              {contactInfo.socials.map((social) => (
-                <a
-                  key={social.platform}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center border border-dark-border hover:border-accent-primary rounded-lg transition-all duration-300 hover:scale-110"
-                  aria-label={social.platform}
-                >
-                  {social.platform === 'GitHub' && <Github size={18} />}
-                  {social.platform === 'LinkedIn' && <Linkedin size={18} />}
-                  {social.platform === 'Twitter' && <Twitter size={18} />}
-                </a>
-              ))}
+            <div className="mb-4">
+              <SocialLinks variant="footer" />
             </div>
             <p className="text-sm text-dark-muted">
               <a href={`mailto:${contactInfo.email}`} className="hover:text-accent-primary transition-colors">
