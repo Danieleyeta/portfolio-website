@@ -148,7 +148,6 @@ function App() {
 
       <main id="main">
         <section className="hero section-shell" aria-labelledby="hero-title">
-          <div className="hero-status"><span /> Available for select projects and opportunities</div>
           <h1 id="hero-title">
             <span
               className="accent rotating-greeting"
